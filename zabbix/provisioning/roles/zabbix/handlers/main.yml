@@ -1,0 +1,8 @@
+---
+# handlers file for zabbix
+
+- name: restart zabbix-server
+  systemd: state=started enabled=yes daemon_reload=yes name=zabbix-server
+
+- name: restart apache2
+  systemd: daemon_reload=yes name=apache2

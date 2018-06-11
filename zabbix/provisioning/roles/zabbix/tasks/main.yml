@@ -1,0 +1,28 @@
+---
+# tasks file for zabbix
+
+- name: install zabbix .deb package from the internet
+  apt: deb=http://repo.zabbix.com/zabbix/3.4/ubuntu/pool/main/z/zabbix-release/zabbix-release_3.4-1+xenial_all.deb
+
+- name: run the equivalent of "apt-get update" as a separate step
+  apt: update_cache=yes cache_valid_time=0
+
+- name: install packages
+  apt: name={{ item }} state=present update_cache=yes
+  with_items:
+  - zabbix-server-mysql
+  - zabbix-frontend-php
+
+- name: create a new database with name 'zabbix'
+  mysql_db: name=zabbix state=import encoding=utf8 collation=utf8_general_ci target=/usr/share/doc/zabbix-server-mysql/create.sql.gz
+
+- name: set 'zabbix'@'localhost' password
+  mysql_user: name=zabbix host=localhost password=zabbix priv=zabbix.*:ALL state=present
+
+- name: change /etc/zabbix/zabbix_server.conf file
+  copy: src=zabbix_server.conf dest=/etc/zabbix/zabbix_server.conf owner=root group=root mode=0644 backup=yes
+  notify: restart zabbix-server
+
+- name: change /etc/apache2/conf-enabled/zabbix.conf file
+  copy: src=zabbix.conf dest=/etc/apache2/conf-enabled/zabbix.conf owner=root group=root mode=0644 backup=yes
+  notify: restart apache2

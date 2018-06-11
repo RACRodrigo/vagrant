@@ -1,0 +1,1 @@
+curl -XPUT localhost:9201/argentina_users/users/1 -d '{"name": "Thiago"}'

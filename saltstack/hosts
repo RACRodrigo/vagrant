@@ -1,0 +1,6 @@
+192.168.56.80 master.vagrant.local master
+192.168.56.80 salt.vagrant.local salt
+192.168.56.81 minion1.vagrant.local minion1
+192.168.56.82 minion2.vagrant.local minion2
+192.168.56.83 minion3.vagrant.local minion3
+192.168.56.84 minion4.vagrant.local minion4

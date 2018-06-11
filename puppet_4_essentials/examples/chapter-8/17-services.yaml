@@ -1,0 +1,6 @@
+services:
+  apache2:
+    enable: true
+    ensure: running
+  syslog-ng:
+    enable: false

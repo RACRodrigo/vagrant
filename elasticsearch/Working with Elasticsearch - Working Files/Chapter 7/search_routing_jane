@@ -1,0 +1,11 @@
+curl 'localhost:9200/users/_search?routing=jane&pretty' -d '{
+  "query": {
+    "bool": {
+      "filter": {
+        "term": {
+          "user": "jane"
+        }
+      }
+    }
+  }
+}'

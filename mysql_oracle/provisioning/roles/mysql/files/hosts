@@ -1,0 +1,15 @@
+127.0.0.1 localhost
+
+192.168.56.51 db1.vagrant.local db1
+192.168.56.52 db2.vagrant.local db2
+192.168.56.53 db3.vagrant.local db3
+192.168.56.54 db4.vagrant.local db4
+192.168.56.55 db5.vagrant.local db5
+192.168.56.56 db6.vagrant.local db6
+
+::1 ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+ff02::3 ip6-allhosts

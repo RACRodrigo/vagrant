@@ -1,0 +1,4 @@
+{"index": { "_index": "videosearch", "_type": "videos", "_id": "batch1-1"}}
+{"title": "Introduction to Elasticsearch"}
+{"index": { "_index": "videosearch", "_type": "videos", "_id": "batch1-2"}}
+{"title": "Elasticsearch and Logstash"}

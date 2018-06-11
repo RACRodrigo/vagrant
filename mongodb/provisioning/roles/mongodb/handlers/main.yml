@@ -1,0 +1,8 @@
+---
+# handlers file for mongodb
+
+- name: restart mongodb
+  service: name=mongodb state=restarted
+
+- name: create mongodb replica set
+  command:

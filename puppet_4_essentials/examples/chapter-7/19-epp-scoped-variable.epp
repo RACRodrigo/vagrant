@@ -1,0 +1,2 @@
+# motd file - managed by Puppet
+This system is running on <%= $::operatingsystem %>

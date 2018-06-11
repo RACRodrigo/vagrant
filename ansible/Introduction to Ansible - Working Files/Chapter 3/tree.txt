@@ -1,0 +1,26 @@
+.
+├── ampedHostsFile
+├── ansible.cfg
+├── group_vars
+│   ├── all
+│   └── dbservers
+├── hosts
+├── roles
+│   └── mariadb
+│       ├── defaults
+│       │   └── main.yml
+│       ├── files
+│       ├── handlers
+│       │   └── main.yml
+│       ├── meta
+│       │   └── main.yml
+│       ├── README.md
+│       ├── tasks
+│       │   └── main.yml
+│       ├── templates
+│       ├── tests
+│       │   ├── inventory
+│       │   └── test.yml
+│       └── vars
+│           └── main.yml
+└── site.yml

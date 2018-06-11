@@ -1,0 +1,9 @@
+127.0.0.1	localhost
+
+192.168.56.211 hadoop-1.vagrant.local hadoop-1
+192.168.56.212 hadoop-2.vagrant.local hadoop-2
+192.168.56.213 hadoop-3.vagrant.local hadoop-3
+
+::1     localhost ip6-localhost ip6-loopback
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters

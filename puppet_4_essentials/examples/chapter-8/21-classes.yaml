@@ -1,0 +1,12 @@
+# common.yaml
+classes:
+  - ssh
+  - syslog
+# ...
+
+---
+# role-webserver.yaml
+classes:
+  - apache
+  - logrotate
+  - syslog

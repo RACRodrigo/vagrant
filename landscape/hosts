@@ -1,0 +1,3 @@
+192.168.56.220 landscape-server.vagrant.local landscape-server
+192.168.56.221 landscape-client01.vagrant.local landscape-client01
+192.168.56.222 landscape-client02.vagrant.local landscape-client02

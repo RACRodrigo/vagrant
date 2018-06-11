@@ -1,0 +1,15 @@
+127.0.0.1	localhost
+
+192.168.56.81	master1.vagrant.local	master1
+192.168.56.82	master2.vagrant.local	master2
+192.168.56.83	master3.vagrant.local	master3
+
+192.168.56.84	data1.vagrant.local	data1
+192.168.56.85	data2.vagrant.local	data2
+
+192.168.56.86	client1.vagrant.local	client1
+192.168.56.87	client2.vagrant.local	client2
+
+::1     localhost ip6-localhost ip6-loopback
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters

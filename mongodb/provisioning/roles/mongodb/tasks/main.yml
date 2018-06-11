@@ -1,0 +1,29 @@
+---
+# tasks file for mongodb
+
+# - name: add apt repository mongodb
+#   apt_key: keyserver=hkp://keyserver.ubuntu.com:80 id=EA312927 state=present
+
+# - name: add apt repository for mongodb
+#   apt_repository: repo='deb http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.2 multiverse' filename='mongodb-org-3.2' state=present
+
+- name: ensure /etc/hosts has mongodb1.vagrant.local entry
+  lineinfile: dest=/etc/hosts regexp='mongodb1.vagrant.local' line='192.168.56.131 mongodb1.vagrant.local mongodb1' owner=root group=root mode=0644
+
+- name: ensure /etc/hosts has mongodb2.vagrant.local entry
+  lineinfile: dest=/etc/hosts regexp='mongodb2.vagrant.local' line='192.168.56.132 mongodb2.vagrant.local mongodb2' owner=root group=root mode=0644
+
+- name: ensure /etc/hosts has mongodb3.vagrant.local entry
+  lineinfile: dest=/etc/hosts regexp='mongodb3.vagrant.local' line='192.168.56.133 mongodb3.vagrant.local mongodb3' owner=root group=root mode=0644
+
+- name: install packages
+  apt: name={{ item }} state=present autoremove=yes
+  with_items:
+    - mongodb
+  notify:
+    - restart mongodb
+    - create mongodb replica set
+
+- name: set /etc/mongodb.conf
+  copy: src=mongodb.conf dest=/etc/mongodb.conf owner=root group=root mode=0644 backup=yes
+  notify: restart mongodb

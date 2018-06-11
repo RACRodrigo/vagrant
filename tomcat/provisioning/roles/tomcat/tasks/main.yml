@@ -1,0 +1,43 @@
+---
+# tasks file for tomcat
+
+- name: install openjdk-8-jdk-headless
+  apt: name=openjdk-8-jdk-headless state=present update_cache=yes
+
+- name: add group www
+  group: name=www gid=1001
+
+- name: add user www
+  user: name=www comment='WWW User Account' createhome=yes group=www uid=1001 home=/www shell=/bin/bash state=present
+
+- name: change .bashrc file for user www
+  copy: src=.bashrc.www dest=/www/.bashrc owner=www group=www mode=0644 backup=yes
+
+- name: install tomcat from web archive
+  unarchive: remote_src=yes src=https://archive.apache.org/dist/tomcat/tomcat-8/v8.0.47/bin/apache-tomcat-8.0.47.tar.gz dest=/www owner=www group=www creates=/www/tomcat/bin/version.sh
+
+- name: change ownership of /www/apache-tomcat-8.0.47
+  file: path=/www/apache-tomcat-8.0.47 owner=www group=www
+
+- name: create symbolic link /www/tomcat
+  file: src=/www/apache-tomcat-8.0.47 dest=/www/tomcat owner=www group=www state=link
+
+- name: set /www/tomcat/conf/tomcat-users.xml
+  copy: src=tomcat-users.xml dest=/www/tomcat/conf/tomcat-users.xml owner=www group=www mode=0644 backup=yes
+  notify: restart tomcat
+
+- name: create /etc/systemd/system/tomcat.service file
+  copy: src=tomcat.service dest=/etc/systemd/system/tomcat.service owner=root group=root mode=0644 backup=yes
+
+- name: start tomcat service and enable at boot
+  systemd: name=tomcat daemon_reload=yes state=started enabled=yes
+
+- name: install nginx
+  apt: name=nginx state=present update_cache=yes
+
+- name: set nginx proxy configuration
+  copy: src=default.nginx dest=/etc/nginx/sites-available/default owner=root group=root mode=0644 backup=yes
+  notify: restart nginx
+
+- name: set sudo rule for www user
+  copy: src=10-www.sudoers dest=/etc/sudoers.d/10-zoom owner=root group=root mode=0440 backup=yes
