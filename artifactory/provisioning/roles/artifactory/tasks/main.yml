@@ -5,7 +5,7 @@
   apt_key: url=https://bintray.com/user/downloadSubjectPublicKey?username=jfrog state=present
 
 - name: add apt repository for artifactory
-  apt_repository: repo='deb https://jfrog.bintray.com/artifactory-debs xenial main' filename='artifactory' state=present update_cache=yes
+  apt_repository: repo='deb https://jfrog.bintray.com/artifactory-debs bionic main' filename='artifactory' state=present update_cache=yes
 
 - name: install packages
   apt: name={{ item }} state=present
