@@ -70,7 +70,7 @@ Vagrant.configure(2) do |config|
   #   sudo apt-get install -y apache2
   # SHELL
 
-  N = 3
+  N = 1
   (1..N).each do |instance_id|
     config.vm.define "ubuntu-bionic64-#{instance_id}" do |instance|
       instance.vm.hostname = "ubuntu-bionic64-#{instance_id}.vagrant.local"
