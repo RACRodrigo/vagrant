@@ -26,7 +26,7 @@ dpkg-reconfigure locales
 
 apt-get dist-upgrade -y
 
-apt-get install -y chrony mysql-server webmin apache2 php5 php5-mysql libapache2-mod-php5 php5-gd php5-curl php5-imap exim4
+apt-get install -y php php-mysql php-curl php-gd php-json php-mbstring php-xml php-cli php-imap php-ldap php-xmlrpc php-apcu libapache2-mod-php apache2 exim4 webmin
 
 apt-get autoremove -y
 
@@ -59,6 +59,8 @@ cp /vagrant/passwd.client /etc/exim4
 chown root:Debian-exim /etc/exim4/passwd.client
 
 wget -q https://github.com/glpi-project/glpi/releases/download/0.90.1/glpi-0.90.1.tar.gz -O /root/glpi-0.90.1.tar.gz
+
+wget -q https://github.com/glpi-project/glpi/releases/download/9.2.3/glpi-9.2.3.tgz -O /root/glpi-9.2.3.tgz
 
 tar xzf /root/glpi-0.90.1.tar.gz -C /var/www && rm /root/glpi-0.90.1.tar.gz
 chgrp -R www-data /var/www/glpi/files /var/www/glpi/config
